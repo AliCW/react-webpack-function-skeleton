@@ -1,19 +1,22 @@
 # react-webpack-frontend-skeleton
-Frontend skeleton code using React &amp; Webpack
+Frontend skeleton code using React &amp; Webpack. Components are functions based, the skeleton includes Jest as a testing suite.
 
-Code below for creating the skeleton:
 
-Initialise the /fe folder:
+## Code below for creating the skeleton:
+
+Initialise the folder:
 
     npm init
 
+Install React
+
     npm install react
     
-To start the frontend:
+Create `.gitignore` & add the below:
 
-create .gitignore - ignore node_modules
+    /node_modules
 
-create folder structure - ./dist ./src ./src/background ./src/components ./src/utils
+Create folder structure - `./__tests__/`, `./dist`, `./src`, `./src/components`, `./src/utils`
 
 Install babel
 
@@ -55,141 +58,145 @@ Install webpack dev-server
 
     npm install -D webpack-dev-server
 
-create `webpack.config.js` file in /fe root - allows you to use all npm packages by including polyfills
+Create `webpack.config.js` file in `/fe` root - allows you to use all npm packages by including polyfills & seems more versitile than `npx create-react-app my-app` build.
 
-`const path = require('path');`
+    const path = require('path');
 
-`module.exports = {`
-`    mode: "development",`
-`    entry: "./src/index.js"`
-`    output: {`
-`        path: path.resolve(__dirname, "dist"),`
-`        publicPath: "/",`
-`      },`
-`    module: {`
-`        rules: [`
-`            {`
-`                test: /\.css$/i,`
-`                use: ["style-loader", "css-loader"],`
-`            },`
-`            {`
-`                test: /\.js|jsx$/,`
-`                exclude: /node_modules/,`
-`                use: {`
-`                    loader: "babel-loader",`
-`                    options: {`
-`                        presets: ["@babel/preset-env", "@babel/preset-react"],`
-`                    },`
-`                },`
-`            },`
-`        ],`
-`    },`
-`    devServer: {`
-`        port: 3000,`
-`        static: "./dist",`
-`        historyApiFallback: true,`
-`    },`
-`    resolve: {`
-`        fallback: {`
-`          fs: false,`
-`          path: require.resolve("path-browserify"),`
-`        },`
-`    },`
-`}`
+    module.exports = {
+        mode: "development",
+        entry: "./src/index.js"
+        output: {`
+            path: path.resolve(__dirname, "dist"),
+            publicPath: "/",
+          },
+        module: {
+            rules: [
+                {
+                    test: /\.css$/i,
+                    use: ["style-loader", "css-loader"],
+                },
+                {
+                    test: /\.js|jsx$/,
+                    exclude: /node_modules/,
+                    use: {`
+                        loader: "babel-loader",
+                        options: {`
+                            presets: ["@babel/preset-env", "@babel/preset-react"],
+                        },
+                    },
+                },
+            ],
+        },
+        devServer: {
+            port: 3000,
+            static: "./dist",
+            historyApiFallback: true,
+        },
+        resolve: {
+            fallback: {
+              fs: false,
+              path: require.resolve("path-browserify"),
+            },
+        },
+    }
 
-create `.babelrc` in ./fe root
+Create `.babelrc` in `./fe` root
 
-`{`
-`  "plugins": ["@babel/syntax-dynamic-import"],`
-`  "presets": [`
-`    [`
-`      "@babel/preset-env",`
-`      {`
-`        "modules": false`
-`      }`
-`    ]`
-`  ]`
-`}`
+    {
+    "plugins": ["@babel/syntax-dynamic-import"],
+    "presets": [
+        [
+        "@babel/preset-env",
+        {
+            "modules": false
+        }
+        ]
+    ]
+    }
 
-create basic files - ./src/index.js
+Create basic files - `./src/index.js`
 
-`import _ from 'lodash';`
-`import React from 'react';`
-`import ReactDOM from 'react-dom/client';`
-`import { BrowserRouter } from 'react-router-dom'`
-`import App from './App.js';`
+    import _ from 'lodash';
+    import React from 'react';
+    import ReactDOM from 'react-dom/client';
+    import { BrowserRouter } from 'react-router-dom'
+    import App from './App.js';
 
-`window.addEventListener("DOMContentLoaded", function (e) {`
-`    ReactDOM.createRoot(document.getElementById('root')).render(`
-`        <BrowserRouter>`
-`            <App/>`
-`        </BrowserRouter>`
-`    );`
-`});`
+    window.addEventListener("DOMContentLoaded", function (e) {
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+        );
+    });
 
-create ./src/App.js
+Create `./src/App.js`
 
-`import React from 'react';`
-`import { Route, Routes } from 'react-router-dom';`
-`import Main from './components/Main.jsx';`
-`import css from './App.css';`
+    import React from 'react';
+    import { Route, Routes } from 'react-router-dom';
+    import Main from './components/Main.jsx';
+    import css from './App.css';
 
-`export default function App(){`
-`    return (`
-`        <div className="App">`
-`            <Routes>`
-`                <Route path="/" element={<Main />} />`
-`            </Routes>`
-`        </div>`
-`    )`
-`}`
 
-create ./src/App.css
+    export default function App(){
 
-`.App{`
-`    text-align: center;`
-`}`
+        return (
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                </Routes>
 
-create ./src/components/Main.jsx
+            </div>
+        )
 
-`import React from 'react';`
+    }
 
-`export default function Main() {`
+Create `./src/App.css`
 
-`    return (`
-`        <div>`
-`            <h1>Main.jsx Header</h1>`
-`        </div>`
-`    )`
-`};`
+    .App{
+        text-align: center;
+    }
 
-create ./dist/index.html
+Create `./src/components/Main.jsx`
 
-`<!DOCTYPE html>`
-`<html>`
-`  <head>`
-`    <meta charset="utf-8" />`
-`    <title>reCAPTCHAv3 demo</title>`
-`  </head>`
-`  <body>`
-`    <div id="root"></div>`
-`    <script src="main.js"></script>`
-`  </body>`
-`</html>`
+    import React from 'react';
 
-change package.json "scripts" object
+    export default function Main() {
 
-`  "scripts": {`
-`    "test": "echo \"Error: no test specified\" && exit 1",`
-`    "start": "webpack serve",`
-`    "build": "webpack"`
-`  },`
+
+    return (
+        <div>
+            <h1>Main.jsx Header</h1>
+        </div>
+    )
+    };
+
+Create `./dist/index.html`
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>reCAPTCHAv3 demo</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="main.js"></script>
+    </body>
+    </html>
+
+Change `package.json` "scripts" object
+
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack serve",
+        "build": "webpack"
+    },
 
 Build the skeleton code
 
     npm run build
 
 Start the server to test
-
 
     npm start
