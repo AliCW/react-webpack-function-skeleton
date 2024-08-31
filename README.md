@@ -1,6 +1,22 @@
 # react-webpack-frontend-skeleton
 Frontend skeleton code using React &amp; Webpack. Components are functions based, the skeleton includes Jest as a testing suite.
 
+JS backend using PSQL & express
+
+Clone the repo
+
+    git clone https://github.com/AliCW/react-webpack-function-skeleton.git
+
+Install the required packages
+
+    npm install
+
+Start the frontend
+
+    npm start
+
+The default IP is sent to 127.0.0.1:3000/
+
 
 ## Code below for creating the skeleton:
 
