@@ -11,6 +11,10 @@ Install the required packages
 
     npm install
 
+Create `.gitignore` & add the below:
+
+    /node_modules
+
 Start the frontend
 
     npm start
