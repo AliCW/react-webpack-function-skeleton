@@ -28,9 +28,9 @@ Initialise the folder:
 
     npm init
 
-Install React
+Install the latest version of react & react-dom (19 at the time or writing)
 
-    npm install react
+    npm install --save-exact react@^19.0.0 react-dom@^19.0.0
     
 Create `.gitignore` & add the below:
 
@@ -54,6 +54,10 @@ Install @babel/preset-react
 
     npm install @babel/preset-react
 
+Install babel-loader
+
+    npm install babel-loader
+
 Install style-loader
 
     npm install style-loader
@@ -62,9 +66,9 @@ Install CSS loader
 
     npm install css-loader
 
-Install react-router-dom
+Install react-router
 
-    npm install react-router-dom
+    npm install react-router
 
 Install webpack
 
@@ -77,6 +81,10 @@ Install webpack client
 Install webpack dev-server
 
     npm install -D webpack-dev-server
+
+Install lodash
+
+    npm install lodash
 
 Create `webpack.config.js` file in `/fe` root - allows you to use all npm packages by including polyfills & seems more versitile than `npx create-react-app my-app` build.
 
